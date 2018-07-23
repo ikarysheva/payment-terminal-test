@@ -1,0 +1,71 @@
+<main>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="column" fxFlexFill.xs fxFlex.gt-xs="640px">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="pad-top pad-left">
+            <mat-icon svgIcon="{{operator?.icon}}"></mat-icon>
+          </div>
+
+          <mat-card-title>{{operator?.name}}</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-progress-bar *ngIf="submitted" mode="indeterminate"></mat-progress-bar>
+        <mat-card-content>
+          <mat-error *ngIf="error" class="pad-sm text-center">{{ error }}</mat-error>
+          <form [formGroup]="paymentForm" (ngSubmit)="onCreatePayment()">
+            <div fxLayout="row"
+                  class="pad-bottom-md"
+                  fxLayoutAlign="center center"
+                  fxLayoutGap="10px">
+              <mat-form-field fxFlex>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="Phone"
+                  formControlName="phone"
+                  [textMask]="{mask: phoneMask}"
+                  required>
+                <mat-hint>Example: +7 (918) 123-45-67</mat-hint>
+                <mat-error *ngIf="phone.hasError('required')">
+                  Phone is
+                  <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="phone.hasError('pattern') && !phone.hasError('required')">
+                    Wrong phone number
+                  </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" class="pad-bottom-md">
+              <mat-form-field fxFlex>
+                <input
+                  matInput
+                  placeholder="Amount"
+                  type="text"
+                  formControlName="amount"
+                  [textMask]="{mask: currencyMask}"
+                  required>
+                <mat-error *ngIf="amount.hasError('min') && !amount.hasError('required')">
+                  Minimum amount 1
+                </mat-error>
+                <mat-error *ngIf="amount.hasError('max') && !amount.hasError('required')">
+                  Maximum amount 1000
+                </mat-error>
+                <mat-error *ngIf="amount.hasError('required')">
+                  Amount is
+                  <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <mat-divider>
+            </mat-divider>
+            <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px" class="pad-top-md">
+              <button mat-raised-button type="submit" color="accent" [disabled]="!paymentForm.valid || submitted">Create</button>
+              <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</main>

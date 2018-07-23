@@ -1,0 +1,20 @@
+<main>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="column" fxFlexFill.xs fxFlex.gt-xs="640px">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title class="pad-left">Select Operator</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <mat-nav-list>
+            <mat-list-item *ngFor="let item of operators$ | async" (click)="onOperatorSelect(item)">
+              <mat-icon mat-list-icon svgIcon="{{item.icon}}"></mat-icon>
+              <p mat-line> {{item.name}} </p>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</main>
