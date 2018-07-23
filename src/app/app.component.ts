@@ -20,15 +20,15 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.matIconRegistry.addSvgIcon(
       `mts`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/mts.svg')
+      this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/icons/mts.svg')
     );
     this.matIconRegistry.addSvgIcon(
       `beeline`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/beeline.svg')
+      this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/icons/beeline.svg')
     );
     this.matIconRegistry.addSvgIcon(
       `megafon`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/megafon.svg')
+      this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/icons/megafon.svg')
     );
     this.titleService.init();
   }
