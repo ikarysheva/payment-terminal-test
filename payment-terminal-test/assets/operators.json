@@ -1,0 +1,19 @@
+{
+  "operators": [
+    {
+      "id": 1,
+      "name": "MTS",
+      "icon": "mts"
+    },
+    {
+      "id": 2,
+      "name": "Beeline",
+      "icon": "beeline"
+    },
+    {
+      "id": 3,
+      "name": "Megafon",
+      "icon": "megafon"
+    }
+  ]
+}
